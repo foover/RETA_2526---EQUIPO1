@@ -7,12 +7,9 @@ assignees: ''
 
 ---
 
-title: '📓 Sesión – DD/MM/AAAA'
-labels: 'cuaderno-trabajo'
-assignees: ''
+📓 Sesión – DD/MM/AAAA
 
 ---
-
 
 👥 Asistencia a la jornada de trabajo
 <!-- Indicad quién ha asistido y quién ha faltado, con justificación si procede -->
