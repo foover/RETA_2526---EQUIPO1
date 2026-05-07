@@ -10,6 +10,6 @@ package com.mycompany.inventarium;
  */
 public enum Roles {
     
-    ADMINISTRADOR, PROFESOR
+    ADMINISTRADOR, PROFESOR;
     
 }
