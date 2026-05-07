@@ -8,7 +8,7 @@ package com.mycompany.inventarium;
  *
  * @author DAW109
  */
-public abstract class Usuario {
+public class Usuario {
     
     private int id;
     private String nombre;
