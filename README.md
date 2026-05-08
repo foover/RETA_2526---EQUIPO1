@@ -65,7 +65,7 @@ Parte del desarrollo y prototipos ya se encuentran distribuidos en distintas ram
 | Daniel Zabala | [@foover](https://github.com/foover)                               |
 | Joaquín López | [@joaquinlopezperez](https://github.com/joaquinlopezperez)         |
 | Rubén Ortiz   | [@Rub3nOL](https://github.com/Rub3nOL)                             |
-| Rubén Ortiz   | [@MarioRevillaAbarquero](https://github.com/MarioRevillaAbarquero) |
+| Mario Revilla | [@MarioRevillaAbarquero](https://github.com/MarioRevillaAbarquero) |
 ---
 
 # 📁 Estructura del repositorio
