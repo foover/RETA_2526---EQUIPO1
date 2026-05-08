@@ -15,7 +15,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Estado-En%20desarrollo-yellow?style=for-the-badge" alt="Estado">
   <img src="https://img.shields.io/badge/Última%20actualización-Mayo%202026-blue?style=for-the-badge" alt="Última actualización">
-  <img src="https://img.shields.io/badge/Contribuidores-3-green?style=for-the-badge" alt="Contribuidores">
+  <img src="https://img.shields.io/badge/Contribuidores-4-green?style=for-the-badge" alt="Contribuidores">
 </p>
 
 ---
