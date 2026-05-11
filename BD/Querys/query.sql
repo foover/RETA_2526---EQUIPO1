@@ -37,15 +37,17 @@ CREATE TABLE material (
     id_material INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     descripcion VARCHAR(300),
-    id_subcategoria INT,
-    id_estado INT,
+    categoria VARCHAR(100),
+    subcategoria VARCHAR(100),
+    estado VARCHAR(100),
     cantidad INT NOT NULL DEFAULT 0,
     id_ubicacion INT,
     fecha_alta DATE,
     observaciones VARCHAR(300),
     
-    FOREIGN KEY (id_subcategoria) REFERENCES subcategorias(id_subcategoria),
-    FOREIGN KEY (id_estado) REFERENCES estado(id_estado),
+    FOREIGN KEY (categoria) REFERENCES categorias(nombre),
+    FOREIGN KEY (subcategoria) REFERENCES subcategorias(nombre),
+    FOREIGN KEY (estado) REFERENCES estado(nombre),
     FOREIGN KEY (id_ubicacion) REFERENCES ubicaciones(id_ubicacion)
 );
 
