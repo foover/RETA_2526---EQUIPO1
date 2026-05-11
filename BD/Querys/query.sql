@@ -1,6 +1,6 @@
-CREATE DATABASE Gestion_Taller;
+CREATE DATABASE gestion_taller;
 
-USE Gestion_Taller;
+USE gestion_taller;
 
 CREATE TABLE usuarios(
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -17,7 +17,7 @@ CREATE TABLE categorias (
 CREATE TABLE subcategorias (
     id_subcategoria INT AUTO_INCREMENT PRIMARY KEY,
     id_categoria INT,
-    nombre VARCHAR(50) NOT NULL,
+    nombre VARCHAR(50) NOT NULL UNIQUE,
     FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria) ON DELETE CASCADE
 );
 
@@ -37,17 +37,17 @@ CREATE TABLE material (
     id_material INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     descripcion VARCHAR(300),
-    categoria VARCHAR(100),
-    subcategoria VARCHAR(100),
-    estado VARCHAR(100),
+	id_categoria INT,
+    id_subcategoria INT,
+    id_estado INT,
     cantidad INT NOT NULL DEFAULT 0,
     id_ubicacion INT,
     fecha_alta DATE,
     observaciones VARCHAR(300),
     
-    FOREIGN KEY (categoria) REFERENCES categorias(nombre),
-    FOREIGN KEY (subcategoria) REFERENCES subcategorias(nombre),
-    FOREIGN KEY (estado) REFERENCES estado(nombre),
+    FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria),
+    FOREIGN KEY (id_subcategoria) REFERENCES subcategorias(id_subcategoria),
+    FOREIGN KEY (id_estado) REFERENCES estado(id_estado),
     FOREIGN KEY (id_ubicacion) REFERENCES ubicaciones(id_ubicacion)
 );
 
