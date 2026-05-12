@@ -17,25 +17,27 @@ public class Material {
     private int id;
     private String nombre;
     private String descripcion;
-    private String categoria;
-    private String subcategoria;
-    private String estado;
+    private int id_categoria;
+    private int id_subcategoria;
+    private int id_estado;
     private int cantidad;
     private int id_ubicacion;
     private LocalDate fecha_alta;
     private String observaciones;
 
-    public Material(String nombre, String descripcion, String categoria, String subcategoria, String estado, int cantidad, int id_ubicacion, LocalDate fecha_alta, String observaciones) {
+    public Material(String nombre, String descripcion, int id_categoria, int id_subcategoria, int id_estado, int cantidad, int id_ubicacion, LocalDate fecha_alta, String observaciones) {
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.categoria = categoria;
-        this.subcategoria = subcategoria;
-        this.estado = estado;
+        this.id_categoria = id_categoria;
+        this.id_subcategoria = id_subcategoria;
+        this.id_estado = id_estado;
         this.cantidad = cantidad;
         this.id_ubicacion = id_ubicacion;
         this.fecha_alta = fecha_alta;
         this.observaciones = observaciones;
     }
+
+    
 
 
     public int getId() {return id;}
@@ -44,12 +46,12 @@ public class Material {
 
     public String getDescripcion() {return descripcion;}
 
-    public String getCategoria() {return categoria;}
+    public int getId_categoria() {return id_categoria;}
 
-    public String getSubcategoria() {return subcategoria;}
+    public int getId_subcategoria() {return id_subcategoria;}
+
+    public int getId_estado() {return id_estado;}
     
-    public String getEstado() {return estado;}
-
     public int getCantidad() {return cantidad;}
 
     public int getId_ubicacion() {return id_ubicacion;}
@@ -65,9 +67,9 @@ public class Material {
         sb.append("Id: ").append(id);
         sb.append(", Nombre: ").append(nombre);
         sb.append(", Descripcion: ").append(descripcion);
-        sb.append(", Categoria: ").append(categoria);
-        sb.append(", Subcategoria: ").append(subcategoria);
-        sb.append(", Estado: ").append(estado);
+        sb.append(", Categoria: ").append(id_categoria);
+        sb.append(", Subcategoria: ").append(id_subcategoria);
+        sb.append(", Estado: ").append(id_estado);
         sb.append(", Cantidad: ").append(cantidad);
         sb.append(", Id ubicacion: ").append(id_ubicacion);
         sb.append(", Fecha alta: ").append(fecha_alta);

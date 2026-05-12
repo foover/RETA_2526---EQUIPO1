@@ -30,7 +30,7 @@ public class MaterialDAO {
         LocalDate fecha = rs.getDate("fecha_alta").toLocalDate();
         
         
-        return new Material(rs.getString("nombre"), rs.getString("descripcion"), rs.getString("categoria"),rs.getString("subcategoria"), rs.getString("estado"), 
+        return new Material(rs.getString("nombre"), rs.getString("descripcion"), rs.getInt("id_categoria"),rs.getInt("id_subcategoria"), rs.getInt("id_estado"), 
                 rs.getInt("cantidad"), rs.getInt("id_ubicacion"), fecha, rs.getString("observaciones"));
 
     }
