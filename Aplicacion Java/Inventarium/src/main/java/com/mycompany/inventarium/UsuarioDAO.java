@@ -37,12 +37,12 @@ public class UsuarioDAO {
         
         String sql = "INSERT INTO usuarios (nombre, contrasena, rol) VALUES (?, ?, ?)";
         
-        try (PreparedStatement stmt = getConexion().prepareStatement(sql)){
+        try (PreparedStatement ps = getConexion().prepareStatement(sql)){
                         
-            stmt.setString(1, u.getNombre());
-            stmt.setString(2, u.getContrasena());
-            stmt.setString(3, u.getRol().toString());
-            int salida = stmt.executeUpdate();
+            ps.setString(1, u.getNombre());
+            ps.setString(2, u.getContrasena());
+            ps.setString(3, u.getRol().toString());
+            int salida = ps.executeUpdate();
 
             if(salida != 1){
                 throw new Exception("No se ha insertado un solo registro de pacientes");
