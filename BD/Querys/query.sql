@@ -1,3 +1,4 @@
+
 CREATE DATABASE gestion_taller;
 
 USE gestion_taller;
@@ -49,12 +50,21 @@ CREATE TABLE material (
     FOREIGN KEY (id_subcategoria) REFERENCES subcategorias(id_subcategoria),
     FOREIGN KEY (id_estado) REFERENCES estado(id_estado),
     FOREIGN KEY (id_ubicacion) REFERENCES ubicaciones(id_ubicacion)
+
 );
 
 
 
 INSERT INTO estado (nombre) VALUES 
 ('Operativo'), ('Averiado'), ('En reparacion'), ('Obsoleto');
+
+INSERT INTO categorias (nombre) VALUES
+("PC’s para prácticas"), ("Componentes hardware"), ("Equipos de red"), ("Cableado estructurado"), ("Herramientas de soldadura y generales"), ("Material fungible");
+
+INSERT INTO subcategorias (id_categoria, nombre) VALUES
+(1, "Portatiles"), (1, "PC"), (2, "Placas base"), (2, "Memorias RAM"), (2, "Procesadores"), (2, "Discos duros"), (2, "Torres"), 
+(3, "Switches"), (3, "Routers"), (3, "Puntos de acceso"), (3, "Patch panels"), (4, "Rosetas"), (4, "Cable UTP/FTP"), (4, "Fibra óptica"),
+(5, "Multímetros"), (5, "Crimpadoras"), (5, "Destornilladores"), (6, "Cable UTP"), (6, "Alcohol isopropílico"), (6, "Pasta térmica"), (6, "Consumibles");
 
 
 
