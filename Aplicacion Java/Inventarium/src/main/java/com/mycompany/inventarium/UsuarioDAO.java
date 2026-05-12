@@ -8,8 +8,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +35,7 @@ public class UsuarioDAO {
     
     public static void anadirProfe(Usuario u){
         
-        String sql = "INSERT INTO usuarios VALUES (?, ?, ?)";
+        String sql = "INSERT INTO usuarios (nombre, contrasena, rol) VALUES (?, ?, ?)";
         
         try (PreparedStatement stmt = getConexion().prepareStatement(sql)){
                         
@@ -66,7 +64,7 @@ public class UsuarioDAO {
     
     public static boolean existeUsuario(String nombre) throws SQLException {
         
-        String sql = "SELECT nombre FROM usuario WHERE nombre = ?";
+        String sql = "SELECT nombre FROM usuarios WHERE nombre = ?";
         
         try (PreparedStatement ps = getConexion().prepareStatement(sql)) {
             ps.setString(1, nombre);
@@ -92,7 +90,7 @@ public class UsuarioDAO {
 
     }
     
-    public static List<Usuario> verJugadores(){
+    public static List<Usuario> verUsuarios(){
         
         String sql = "SELECT id, nombre, contrasena, rol FROM usuarios";
         
@@ -117,157 +115,31 @@ public class UsuarioDAO {
         return lista;
 
     }
-    
-    private static Material crearMaterial (final ResultSet rs) throws SQLException {
-        
-        LocalDate fecha = rs.getDate("fecha_alta").toLocalDate();
-        
-        
-        return new Material(rs.getString("nombre"), rs.getString("descripcion"), rs.getString("categoria"),rs.getString("subcategoria"), rs.getString("estado"), 
-                rs.getInt("cantidad"), rs.getInt("id_ubicacion"), fecha, rs.getString("observaciones"));
 
-    }
-    
-    public static List<Material> verInventario(){
-
-        String sql = "SELECT id_material, nombre, descripcion, id_subcategoria, estado, cantidad, id_ubicacion, fecha_alta, observaciones FROM material";
-        
-        List<Material> lista = new ArrayList<>();
-        
-        try (PreparedStatement ps = getConexion().prepareStatement(sql)){
+    public static Usuario login(String nombre, String contrasena) {
             
-            try(ResultSet rs = ps.executeQuery()) {
-                
-                while(rs.next()) {
-                    
-                    lista.add(crearMaterial(rs));
-
-                }
-                
-            }
-                       
-        } catch (SQLException ex) {
-            System.out.println("SQL ERROR -> " + ex.getMessage());
-        }
+        String sql = "SELECT id, nombre, contrasena, rol FROM usuarios WHERE nombre = ? AND contrasena = ?";
         
-        return lista;
-        
-        
-    }
-    
-    public static List<Material> filtrarPorNombre(String nombre){
-
-        String sql = "SELECT id_material, nombre, descripcion, id_subcategoria, estado, cantidad, id_ubicacion, fecha_alta, observaciones FROM material WHERE nombre =?";
-        
-        List<Material> lista = new ArrayList<>();
-        
-        try (PreparedStatement ps = getConexion().prepareStatement(sql)){
+        try (PreparedStatement ps = getConexion().prepareStatement(sql)) {
             
             ps.setString(1, nombre);
+            ps.setString(2, contrasena);
             
-            try(ResultSet rs = ps.executeQuery()) {
+            try (ResultSet rs = ps.executeQuery()) {
                 
-                while(rs.next()) {
+                if (rs.next()) {
                     
-                    lista.add(crearMaterial(rs));
-
+                    return crearUsuario(rs);
+                    
                 }
-                
             }
-                       
-        } catch (SQLException ex) {
-            System.out.println("SQL ERROR -> " + ex.getMessage());
+        } catch (SQLException e) {
+            System.out.println("SQL ERROR -> " + e.getMessage());
         }
         
-        return lista;
-         
+        return null;
+        
     }
-    
-    public static List<Material> filtrarPorCategoria(String categoria){
-
-        String sql = "SELECT id_material, nombre, descripcion, categoria, subcategoria, estado, cantidad, id_ubicacion, fecha_alta, observaciones FROM material WHERE categoria=?";
-        
-        List<Material> lista = new ArrayList<>();
-        
-        try (PreparedStatement ps = getConexion().prepareStatement(sql)){
-            
-            ps.setString(1, categoria);
-            
-            try(ResultSet rs = ps.executeQuery()) {
-                
-                while(rs.next()) {
-                    
-                    lista.add(crearMaterial(rs));
-
-                }
-                
-            }
-                       
-        } catch (SQLException ex) {
-            System.out.println("SQL ERROR -> " + ex.getMessage());
-        }
-        
-        return lista;
-         
-    }
-    
-    public static List<Material> filtrarPorEstado(String estado){
-
-        String sql = "SELECT id_material, nombre, descripcion, categoria, subcategoria, estado, cantidad, id_ubicacion, fecha_alta, observaciones FROM material WHERE estado =?";
-        
-        List<Material> lista = new ArrayList<>();
-        
-        try (PreparedStatement ps = getConexion().prepareStatement(sql)){
-            
-            ps.setString(1, estado);
-            
-            try(ResultSet rs = ps.executeQuery()) {
-                
-                while(rs.next()) {
-                    
-                    lista.add(crearMaterial(rs));
-
-                }
-                
-            }
-                       
-        } catch (SQLException ex) {
-            System.out.println("SQL ERROR -> " + ex.getMessage());
-        }
-        
-        return lista;
-         
-    }
-    
-    public static List<Material> filtrarPorCodigo(int id){
-
-        String sql = "SELECT id_material, nombre, descripcion, categoria, subcategoria, estado, cantidad, id_ubicacion, fecha_alta, observaciones FROM material WHERE id_material=?";
-        
-        List<Material> lista = new ArrayList<>();
-        
-        try (PreparedStatement ps = getConexion().prepareStatement(sql)){
-            
-            ps.setInt(1, id);
-            
-            try(ResultSet rs = ps.executeQuery()) {
-                
-                while(rs.next()) {
-                    
-                    lista.add(crearMaterial(rs));
-
-                }
-                
-            }
-                       
-        } catch (SQLException ex) {
-            System.out.println("SQL ERROR -> " + ex.getMessage());
-        }
-        
-        return lista;
-         
-    }
-
-    
     
     
     
