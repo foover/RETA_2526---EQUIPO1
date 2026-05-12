@@ -1,0 +1,59 @@
+
+
+:root {
+  /* Colores  principales */
+  --bg:                 #0b0f19;
+  --surface:            #111827;
+  --surface-2:          #1f2937;
+  --frame:              #0e1420;
+  --frame-border:       #374151;
+
+  /* celdas */
+  --celda-open-bg:      #151e2d;
+  --celda-open-border:  #3b4b63;
+  --celda-tall-bg:      #0d131f;
+  --celda-tall-border:  #2d3748;
+  --celda-low-bg:       #101726;
+  --celda-low-border:   #313d52;
+  --celda-sel-bg:       #115e59;
+  --celda-sel-border:   #2dd4bf;    
+
+  /* texto */
+  --text:               #f1f5f9;
+  --text-muted:         #94a3b8;
+  --text-accent:        #5eead4;
+
+  /* estados  */
+  --op-bg:   #064e3b;  --op-fg:  #34d399;
+  --av-bg:   #7f1d1d;  --av-fg:  #f87171;
+  --rep-bg:  #78350f;  --rep-fg: #fbbf24;
+  --obs-bg:  #334155;  --obs-fg: #cbd5e1;
+
+  /* utilidades */
+  --zone-color:  #64748b;
+  --sep-color:   #1e293b;
+  --radius:      6px;
+  --gap:         10px;
+  --transition:  200ms ease;
+}
+
+/* RESET */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* BODY  */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Mono', 'Fira Mono', 'Consolas', monospace;
+  height: 100vh;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  padding: 0.8rem;
+}
