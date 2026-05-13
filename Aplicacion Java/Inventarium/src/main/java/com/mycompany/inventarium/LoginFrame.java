@@ -46,7 +46,7 @@ public class LoginFrame extends javax.swing.JFrame {
         lblUsuario = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         lblContrasena = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txtContrasena = new javax.swing.JPasswordField();
         lblError = new javax.swing.JLabel();
         btnEntrar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
@@ -120,11 +120,16 @@ public class LoginFrame extends javax.swing.JFrame {
         lblContrasena.setText("Contraseña");
         jPanel2.add(lblContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 100, 30));
 
-        jPasswordField1.setBackground(new java.awt.Color(38, 38, 36));
-        jPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(91, 90, 86)));
-        jPanel2.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 380, 34));
+        txtContrasena.setBackground(new java.awt.Color(38, 38, 36));
+        txtContrasena.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        txtContrasena.setForeground(new java.awt.Color(255, 255, 255));
+        txtContrasena.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(91, 90, 86)));
+        txtContrasena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtContrasenaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 380, 34));
 
         lblError.setForeground(new java.awt.Color(180, 50, 50));
         jPanel2.add(lblError, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 168, 380, 30));
@@ -200,6 +205,10 @@ public class LoginFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEntrarActionPerformed
 
+    private void txtContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContrasenaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContrasenaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -249,7 +258,6 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblContrasena;
     private javax.swing.JLabel lblCreeden;
@@ -258,6 +266,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblSubtitulo;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblUsuario;
+    private javax.swing.JPasswordField txtContrasena;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
