@@ -36,7 +36,7 @@ public class MaterialDAO {
 
     }
     
-    public static boolean insertarMaterial(Material m){
+    public static boolean actualizarMaterial(Material m){
         
         try {
             
@@ -69,28 +69,7 @@ public class MaterialDAO {
 
             }
             
-            String insertSql = ("INSERT INTO materiales(nombre, descripcion, id_categoria,id_subcategoria, id_estado,id_ubicacion, cantidad, fecha_alta,observaciones) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                    
-
-            PreparedStatement psInsertar = getConexion().prepareStatement(insertSql);
-
-            psInsertar.setString(1, m.getNombre());
-            psInsertar.setString(2, m.getDescripcion());
-            psInsertar.setInt(3, m.getId_categoria());
-            psInsertar.setInt(4, m.getId_subcategoria());
-            psInsertar.setInt(5, m.getId_estado());
-            psInsertar.setInt(6, m.getId_ubicacion());
-
-            psInsertar.setInt(7, m.getCantidad());
-
-            psInsertar.setDate(8,Date.valueOf(m.getFecha_alta()));
-
-            ps.setString(9,m.getObservaciones());
-
-            ps.executeUpdate();
-
             return true;
-            
         } catch (SQLException e) {
             System.out.println("SQL ERROR -> " + e.getMessage());
             return false;
@@ -101,8 +80,44 @@ public class MaterialDAO {
         
     }
     
-    
-    
+    public static void insertarMaterial (Material m) {
+        
+            String insertSql = ("INSERT INTO materiales(nombre, descripcion, id_categoria,id_subcategoria, id_estado,id_ubicacion, cantidad, fecha_alta,observaciones) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                    
+
+            try (PreparedStatement ps = getConexion().prepareStatement(insertSql)){
+                
+                ps.setString(1, m.getNombre());
+                ps.setString(2, m.getDescripcion());
+                ps.setInt(3, m.getId_categoria());
+                ps.setInt(4, m.getId_subcategoria());
+                ps.setInt(5, m.getId_estado());
+                ps.setInt(6, m.getId_ubicacion());
+
+                ps.setInt(7, m.getCantidad());
+
+                ps.setDate(8,Date.valueOf(m.getFecha_alta()));
+
+                ps.setString(9,m.getObservaciones());
+                
+                int salida = ps.executeUpdate();
+                
+                if(salida < 1){
+                    System.out.println("No se ha añadido el material correctamente");
+                }else if(salida == 1){
+                    System.out.println("Se ha añadido un material correctamente");
+                }else {
+                    System.out.println("Se han añadido varios materiales");
+                }
+                
+                
+            } catch (SQLException e) {
+                System.out.println("SQL -> " + e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Surgio un error inesperado");
+            }
+
+    }
     
     public static List<Material> verInventario(){
 
