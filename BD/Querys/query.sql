@@ -28,11 +28,23 @@ CREATE TABLE estado (
 );
 
 CREATE TABLE ubicaciones (
-    id_ubicacion INT AUTO_INCREMENT PRIMARY KEY,
-    codigo_armario VARCHAR(10) NOT NULL,
-    balda VARCHAR(10) NOT NULL,
-    UNIQUE(codigo_armario, balda)
+    codigo_armario INT AUTO_INCREMENT PRIMARY KEY,
+    espacio VARCHAR(10) NOT NULL UNIQUE
 );
+
+INSERT INTO ubicaciones(espacio) VALUES ("A1"), ("A2"), ("A3"), ("A4"), ("B1"), ("B2"), ("B3"), ("B4"), ("TALLER"), ("C1"), ("C2"), ("C3"), 
+("D1"), ("D2"), ("D3"), ("E1"), ("E2"), ("E3"), ("DTD"), ("F1"), ("F2"), ("F3");
+
+INSERT INTO estado (nombre) VALUES 
+('Operativo'), ('Averiado'), ('En reparacion'), ('Obsoleto');
+
+INSERT INTO categorias (nombre) VALUES
+("PC’s para prácticas"), ("Componentes hardware"), ("Equipos de red"), ("Cableado estructurado"), ("Herramientas de soldadura y generales"), ("Material fungible");
+
+INSERT INTO subcategorias (id_categoria, nombre) VALUES
+(1, "Portatiles"), (1, "PC"), (2, "Placas base"), (2, "Memorias RAM"), (2, "Procesadores"), (2, "Discos duros"), (2, "Torres"), 
+(3, "Switches"), (3, "Routers"), (3, "Puntos de acceso"), (3, "Patch panels"), (4, "Rosetas"), (4, "Cable UTP/FTP"), (4, "Fibra óptica"),
+(5, "Multímetros"), (5, "Crimpadoras"), (5, "Destornilladores"), (6, "Cable UTP"), (6, "Alcohol isopropílico"), (6, "Pasta térmica"), (6, "Consumibles");
 
 CREATE TABLE material (
     id_material INT AUTO_INCREMENT PRIMARY KEY,
@@ -52,22 +64,3 @@ CREATE TABLE material (
     FOREIGN KEY (id_ubicacion) REFERENCES ubicaciones(id_ubicacion)
 
 );
-
-
-
-INSERT INTO estado (nombre) VALUES 
-('Operativo'), ('Averiado'), ('En reparacion'), ('Obsoleto');
-
-INSERT INTO categorias (nombre) VALUES
-("PC’s para prácticas"), ("Componentes hardware"), ("Equipos de red"), ("Cableado estructurado"), ("Herramientas de soldadura y generales"), ("Material fungible");
-
-INSERT INTO subcategorias (id_categoria, nombre) VALUES
-(1, "Portatiles"), (1, "PC"), (2, "Placas base"), (2, "Memorias RAM"), (2, "Procesadores"), (2, "Discos duros"), (2, "Torres"), 
-(3, "Switches"), (3, "Routers"), (3, "Puntos de acceso"), (3, "Patch panels"), (4, "Rosetas"), (4, "Cable UTP/FTP"), (4, "Fibra óptica"),
-(5, "Multímetros"), (5, "Crimpadoras"), (5, "Destornilladores"), (6, "Cable UTP"), (6, "Alcohol isopropílico"), (6, "Pasta térmica"), (6, "Consumibles");
-
-
-
-
-
-
