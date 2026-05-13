@@ -61,6 +61,6 @@ CREATE TABLE material (
     FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria),
     FOREIGN KEY (id_subcategoria) REFERENCES subcategorias(id_subcategoria),
     FOREIGN KEY (id_estado) REFERENCES estado(id_estado),
-    FOREIGN KEY (id_ubicacion) REFERENCES ubicaciones(id_ubicacion)
+    FOREIGN KEY (id_ubicacion) REFERENCES ubicaciones(codigo_armario)
 
 );
