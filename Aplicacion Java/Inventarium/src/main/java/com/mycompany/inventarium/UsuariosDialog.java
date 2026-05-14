@@ -70,6 +70,7 @@ public class UsuariosDialog extends javax.swing.JDialog {
 
         btnAnadir.setBackground(new java.awt.Color(24, 95, 165));
         btnAnadir.setForeground(new java.awt.Color(255, 255, 255));
+        btnAnadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/plus.png"))); // NOI18N
         btnAnadir.setText("Añadir profesor");
         btnAnadir.setBorderPainted(false);
         btnAnadir.setFocusPainted(false);
@@ -78,10 +79,11 @@ public class UsuariosDialog extends javax.swing.JDialog {
                 btnAnadirActionPerformed(evt);
             }
         });
-        panelContenido.add(btnAnadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 32));
+        panelContenido.add(btnAnadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 140, 32));
 
         btnEliminar.setBackground(new java.awt.Color(44, 50, 62));
         btnEliminar.setForeground(new java.awt.Color(210, 70, 70));
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bin.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
         btnEliminar.setBorderPainted(false);
         btnEliminar.setFocusPainted(false);
@@ -90,7 +92,7 @@ public class UsuariosDialog extends javax.swing.JDialog {
                 btnEliminarActionPerformed(evt);
             }
         });
-        panelContenido.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 100, 32));
+        panelContenido.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 100, 32));
 
         tablaUsuarios.setBackground(new java.awt.Color(36, 41, 51));
         tablaUsuarios.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N

@@ -71,7 +71,7 @@ public class AdminPanelFrame extends javax.swing.JFrame {
         lblTitulo.setBackground(new java.awt.Color(255, 255, 255));
         lblTitulo.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        lblTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/llave.png"))); // NOI18N
+        lblTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/llavenBlanca.png"))); // NOI18N
         lblTitulo.setText("Gestión del Taller - IES Miguel Herrero Pereda");
         panelSuperior.add(lblTitulo, java.awt.BorderLayout.CENTER);
 
@@ -205,6 +205,7 @@ public class AdminPanelFrame extends javax.swing.JFrame {
 
         btnAlta.setBackground(new java.awt.Color(24, 95, 165));
         btnAlta.setForeground(new java.awt.Color(255, 255, 255));
+        btnAlta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/plus.png"))); // NOI18N
         btnAlta.setText("Alta");
         btnAlta.setBorderPainted(false);
         btnAlta.setFocusPainted(false);
@@ -217,6 +218,7 @@ public class AdminPanelFrame extends javax.swing.JFrame {
 
         btnEditar.setBackground(new java.awt.Color(44, 50, 62));
         btnEditar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/edit.png"))); // NOI18N
         btnEditar.setText("Editar");
         btnEditar.setBorderPainted(false);
         btnEditar.setFocusPainted(false);
@@ -229,6 +231,7 @@ public class AdminPanelFrame extends javax.swing.JFrame {
 
         btnDarDeBaja.setBackground(new java.awt.Color(44, 50, 62));
         btnDarDeBaja.setForeground(new java.awt.Color(255, 255, 255));
+        btnDarDeBaja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/basuraEnBlanco.png"))); // NOI18N
         btnDarDeBaja.setText("Dar de baja");
         btnDarDeBaja.setBorderPainted(false);
         btnDarDeBaja.setFocusPainted(false);
@@ -241,6 +244,7 @@ public class AdminPanelFrame extends javax.swing.JFrame {
 
         btnLocalizar.setBackground(new java.awt.Color(44, 50, 62));
         btnLocalizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnLocalizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/location.png"))); // NOI18N
         btnLocalizar.setText("Localizar");
         btnLocalizar.setBorderPainted(false);
         btnLocalizar.setFocusPainted(false);
