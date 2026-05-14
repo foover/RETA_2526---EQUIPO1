@@ -1,52 +1,59 @@
 
-
+/* ============================================================
+   VARIABLES
+   ============================================================ */
 :root {
-  /* Colores  principales */
-  --bg:                 #0b0f19;
-  --surface:            #111827;
-  --surface-2:          #1f2937;
-  --frame:              #0e1420;
-  --frame-border:       #374151;
+  /* Página */
+  --bg:            #111827;
 
-  /* celdas */
-  --celda-open-bg:      #151e2d;
-  --celda-open-border:  #3b4b63;
-  --celda-tall-bg:      #0d131f;
-  --celda-tall-border:  #2d3748;
-  --celda-low-bg:       #101726;
-  --celda-low-border:   #313d52;
-  --celda-sel-bg:       #115e59;
-  --celda-sel-border:   #2dd4bf;    
+  /* Materiales del armario */
+  --wood:          #6b7c8d;
+  --wood-dark:     #2e3d4e;
+  --wood-mid:      #4a5e70;
+  --divider:       #2e3d4e;
 
-  /* texto */
-  --text:               #f1f5f9;
-  --text-muted:         #94a3b8;
-  --text-accent:        #5eead4;
+  /* Paneles */
+  --shelf-bg:      #c8d2db;
+  --shelf-hover:   #d6dfe7;
+  --door-bg:       #9aaab6;
+  --door-hover:    #a8b8c4;
+  --low-bg:        #8fa0aa;
+  --low-hover:     #9cb0ba;
 
-  /* estados  */
+  /* Texto sobre paneles */
+  --text-panel:    #1a2e3e;
+  --text-sub:      #4a6070;
+  --handle:        #253545;
+
+  /* Selección */
+  --sel-border:    #3b82f6;
+  --sel-fill:      rgba(59,130,246,0.18);
+
+  /* Info panel (tema oscuro original) */
+  --surface:       #111827;
+  --surface-2:     #151D2E;
+  --text:          #f1f5f9;
+  --text-muted:    #94a3b8;
+  --text-accent:   #5eead4;
+  --frame-border:  #2DD4BF;
+
+  /* Badges */
   --op-bg:   #064e3b;  --op-fg:  #34d399;
   --av-bg:   #7f1d1d;  --av-fg:  #f87171;
   --rep-bg:  #78350f;  --rep-fg: #fbbf24;
   --obs-bg:  #334155;  --obs-fg: #cbd5e1;
 
-  /* utilidades */
-  --zone-color:  #64748b;
-  --sep-color:   #1e293b;
-  --radius:      6px;
-  --gap:         10px;
-  --transition:  200ms ease;
+  --transition: 140ms ease;
 }
 
-/* RESET */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* ============================================================
+   RESET
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* BODY  */
+/* ============================================================
+   BODY / PÁGINA
+   ============================================================ */
 body {
   background: var(--bg);
   color: var(--text);
@@ -58,16 +65,17 @@ body {
   padding: 0.8rem;
 }
 
-/* CONTENEDOR PRINCIPAL */
 .container {
-  flex: 1;                     
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-width: none;             
+  max-width: none;
 }
 
-/* CABECERA */
+/* ============================================================
+   CABECERA
+   ============================================================ */
 .header {
   display: flex;
   align-items: baseline;
@@ -76,86 +84,400 @@ body {
   border-bottom: 1px solid var(--frame-border);
   flex-shrink: 0;
 }
+.header-title { font-size: 13px; font-weight: 600; letter-spacing: 0.03em; }
+.header-sub   { font-size: 10px; color: var(--text-muted); }
 
-.header-title {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-}
-
-.header-sub {
-  font-size: 10px;
-  color: var(--text-muted);
-}
-
-/* ARMARIO */
+/* ============================================================
+   ARMARIO — marco exterior
+   ============================================================ */
 .armario {
-  background: var(--frame);
-  border: 2px solid var(--frame-border);
-  border-radius: 10px;
-  padding: 18px;
+  background: var(--divider);
+  border: 7px solid var(--wood-dark);
+  box-shadow:
+    inset 0 0 0 2px var(--wood-mid),
+    0 6px 28px rgba(0,0,0,0.65);
+  padding: 7px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  flex: 1;                     
-  min-height: 0;               
-  overflow-y: auto;            
+  gap: 7px;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
 }
 
-/* ETIQUETAS */
-.zone-label {
-  display: block;
-  font-size: 9px;
-  color: var(--zone-color);
-  text-align: center;
-  margin-bottom: 4px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.zone-label--bottom {
-  margin-top: 6px;
-}
-
-/* SEPARADOR */
+/* ============================================================
+   SEPARADOR — tablón horizontal entre secciones
+   ============================================================ */
 .separador {
-  height: 4px;
-  border-radius: 2px;
+  height: 13px;
   flex-shrink: 0;
-  background: repeating-linear-gradient(
-    90deg,
-    var(--sep-color) 0 4px,
-    transparent    4px 8px
-  );
+  background: var(--wood-mid);
+  box-shadow:
+    inset 0 3px 0 rgba(255,255,255,0.09),
+    inset 0 -3px 0 rgba(0,0,0,0.28),
+    0 1px 0 var(--wood-dark),
+    0 -1px 0 var(--wood-dark);
 }
 
-/* FILAS Y BLOQUES */
+/* ============================================================
+   LAYOUT — filas y bloques
+   ============================================================ */
 .fila {
   display: grid;
-  gap: var(--gap);
-  flex: 1;                     
+  gap: 6px;
+  background: var(--divider);
+  flex: 1;
 }
 .fila-4 { grid-template-columns: repeat(4, 1fr); }
-.fila-3 { grid-template-columns: repeat(3, 1fr); }
+.fila-3 { grid-template-columns: 2fr 1fr 2fr; }
 
 .bloque-superior {
   display: flex;
   flex-direction: column;
-  gap: var(--gap);
+  gap: 6px;
+  background: var(--divider);
   flex: 1;
+  border: 3px solid var(--wood);
 }
 
 .bloque-central {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
-  gap: var(--gap);
+  gap: 6px;
+  background: var(--divider);
   align-items: stretch;
-  flex: 1;
+  flex: 3;
 }
 
 .zona-interior {
   display: flex;
   flex-direction: column;
-  gap: var(--gap);
+  gap: 6px;
+  background: var(--divider);
   flex: 1;
+  border: 3px solid var(--wood);
+}
+
+/* F row — armarios bajos son más bajos que los estantes */
+.fila-bajo {
+  flex: 0 0 auto;
+  min-height: 0;
+}
+.fila-bajo .celda {
+  min-height: 82px;
+}
+
+/* ============================================================
+   CELDAS — base
+   ============================================================ */
+.celda {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 7px 9px;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  min-height: 72px;
+  transition: background var(--transition);
+}
+
+.celda:hover {
+  outline: 2px solid var(--sel-border);
+  outline-offset: -2px;
+  z-index: 1;
+}
+
+.celda:active { filter: brightness(0.9); }
+
+/* ── Estante abierto — sombra superior sugiere profundidad del hueco ── */
+.celda.abierto {
+  background: var(--shelf-bg);
+  box-shadow:
+    inset 0 10px 18px rgba(0,0,0,0.22),
+    inset 4px 0 8px rgba(0,0,0,0.08),
+    inset -4px 0 8px rgba(0,0,0,0.08);
+}
+.celda.abierto:hover { background: var(--shelf-hover); }
+
+/* ── Puerta alta — panel sólido con bisel ── */
+.celda.armario-alto {
+  background: var(--door-bg);
+  align-self: stretch;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  min-height: 0;
+  padding-bottom: 14px;
+  border: 3px solid var(--wood);
+  box-shadow:
+    inset 3px 3px 0 rgba(255,255,255,0.12),
+    inset -3px -3px 0 rgba(0,0,0,0.18);
+}
+.celda.armario-alto:hover { background: var(--door-hover); }
+
+/* Línea central — divide visualmente en dos hojas de puerta */
+.celda.armario-alto::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  top: 6%;
+  bottom: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--wood);
+  z-index: 1;
+}
+
+/* Dos tiradores, uno a cada lado de la línea central */
+.celda.armario-alto::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--handle);
+  box-shadow: 28px 0 0 0 var(--handle);
+  left: calc(50% - 19px);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+/* ── Armario bajo — cajón cerrado con bisel ── */
+.celda.armario-bajo {
+  background: var(--low-bg);
+  min-height: 58px;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 8px;
+  box-shadow:
+    inset 3px 3px 0 rgba(255,255,255,0.1),
+    inset -3px -3px 0 rgba(0,0,0,0.15);
+}
+.celda.armario-bajo:hover { background: var(--low-hover); }
+
+/* Armario bajo — sin pseudo-elementos por defecto; se definen por posición */
+.celda.armario-bajo::before,
+.celda.armario-bajo::after { content: none; }
+
+/* F1 y F3 (first/last): doble puerta — línea central + 2 tiradores */
+.fila-bajo .celda:first-child::before,
+.fila-bajo .celda:last-child::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  top: 6%;
+  bottom: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--wood);
+  z-index: 1;
+}
+.fila-bajo .celda:first-child::after,
+.fila-bajo .celda:last-child::after {
+  content: '';
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--handle);
+  box-shadow: 26px 0 0 0 var(--handle);
+  left: calc(50% - 17px);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+/* F2 (nth-child 2): puerta simple — tirador centrado */
+.fila-bajo .celda:nth-child(2)::before {
+  content: '';
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--handle);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+/* ── Seleccionada ── */
+.celda.selected {
+  background: var(--sel-fill) !important;
+  outline: 2px solid var(--sel-border) !important;
+  outline-offset: -2px;
+}
+
+/* ============================================================
+   TEXTO INTERIOR DE CELDA
+   ============================================================ */
+.c-icon { display: none; }
+
+.c-lbl {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text-panel);
+  line-height: 1;
+}
+
+.celda.armario-alto .c-lbl,
+.celda.armario-bajo .c-lbl {
+  font-size: 10px;
+  color: var(--handle);
+}
+
+.c-sub {
+  font-size: 8px;
+  letter-spacing: 0.04em;
+  color: var(--text-sub);
+  margin-top: 2px;
+  display: none;
+}
+
+.zone-label { display: none; }
+
+/* ============================================================
+   PANEL DE INFORMACIÓN
+   ============================================================ */
+.info-panel {
+  background: var(--surface-2);
+  border: 1px solid var(--frame-border);
+  border-left: 3px solid var(--text-accent);
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  padding: 0 14px;
+  transition: grid-template-rows 250ms ease,
+              opacity 250ms ease,
+              padding 250ms ease;
+}
+
+.info-panel.visible {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  padding: 12px 14px;
+}
+
+.info-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+.info-header {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.info-codigo { font-size: 10px; color: var(--text-accent); }
+.info-title  { font-size: 13px; font-weight: 600; color: var(--text); }
+
+.info-loading,
+.info-error,
+.info-tabla-wrap,
+.info-vacio { display: none; }
+
+.info-loading {
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.info-error {
+  font-size: 12px;
+  color: #f87171;
+  background: #451a1a;
+  border-radius: 3px;
+  padding: 6px 10px;
+}
+
+.spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #3b4b63;
+  border-top-color: var(--text-accent);
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.info-tabla-wrap { overflow-x: auto; }
+
+.info-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+  color: var(--text);
+}
+
+.info-tabla th,
+.info-tabla td {
+  text-align: left;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--frame-border);
+  white-space: nowrap;
+}
+
+.info-tabla th {
+  font-size: 10px;
+  color: var(--text-muted);
+  background: var(--surface);
+}
+
+.info-tabla tbody tr:hover td { background: #374151; }
+
+.badge {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 600;
+}
+.badge-Operativo      { background: var(--op-bg);  color: var(--op-fg); }
+.badge-Averiado       { background: var(--av-bg);  color: var(--av-fg); }
+.badge-En-reparacion  { background: var(--rep-bg); color: var(--rep-fg); }
+.badge-Obsoleto       { background: var(--obs-bg); color: var(--obs-fg); }
+
+.info-vacio {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-style: italic;
+  padding: 8px 0;
+}
+
+.info-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 15px;
+  padding: 2px 4px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  transition: color var(--transition), background var(--transition);
+}
+.info-close:hover {
+  color: var(--text);
+  background: #3b4b63;
 }
