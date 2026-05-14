@@ -57,3 +57,105 @@ body {
   justify-content: center;
   padding: 0.8rem;
 }
+
+/* CONTENEDOR PRINCIPAL */
+.container {
+  flex: 1;                     
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: none;             
+}
+
+/* CABECERA */
+.header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--frame-border);
+  flex-shrink: 0;
+}
+
+.header-title {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.header-sub {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+/* ARMARIO */
+.armario {
+  background: var(--frame);
+  border: 2px solid var(--frame-border);
+  border-radius: 10px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;                     
+  min-height: 0;               
+  overflow-y: auto;            
+}
+
+/* ETIQUETAS */
+.zone-label {
+  display: block;
+  font-size: 9px;
+  color: var(--zone-color);
+  text-align: center;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.zone-label--bottom {
+  margin-top: 6px;
+}
+
+/* SEPARADOR */
+.separador {
+  height: 4px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--sep-color) 0 4px,
+    transparent    4px 8px
+  );
+}
+
+/* FILAS Y BLOQUES */
+.fila {
+  display: grid;
+  gap: var(--gap);
+  flex: 1;                     
+}
+.fila-4 { grid-template-columns: repeat(4, 1fr); }
+.fila-3 { grid-template-columns: repeat(3, 1fr); }
+
+.bloque-superior {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  flex: 1;
+}
+
+.bloque-central {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  gap: var(--gap);
+  align-items: stretch;
+  flex: 1;
+}
+
+.zona-interior {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  flex: 1;
+}
