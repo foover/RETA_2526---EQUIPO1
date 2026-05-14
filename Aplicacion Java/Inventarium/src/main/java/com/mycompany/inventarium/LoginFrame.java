@@ -216,7 +216,7 @@ public class LoginFrame extends javax.swing.JFrame {
         
         if(UsuarioDAO.login(nombre, contrasena)){
             dispose();
-            new AdminPanelFrame().setVisible(true);
+            new AdminPanelFrame(nombre).setVisible(true);
             lblError.setText("");
         }else{
             lblError.setText("Error: la contraseña no coincide");

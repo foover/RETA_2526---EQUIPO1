@@ -4,6 +4,13 @@
  */
 package com.mycompany.inventarium;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Joaquin
@@ -13,8 +20,11 @@ public class AdminPanelFrame extends javax.swing.JFrame {
     /**
      * Creates new form AdminPanelFrame
      */
-    public AdminPanelFrame() {
+    public AdminPanelFrame(String nombreUsuario) {
         initComponents();
+        this.setSize(1200, 750);
+        lblNombreUsuario.setText(nombreUsuario);
+        cargarTabla();
     }
 
     /**
@@ -271,6 +281,7 @@ public class AdminPanelFrame extends javax.swing.JFrame {
         tablaInventario.setRowHeight(30);
         tablaInventario.setSelectionBackground(new java.awt.Color(12, 60, 120));
         tablaInventario.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tablaInventario.setShowVerticalLines(true);
         jScrollPane1.setViewportView(tablaInventario);
 
         panelCentral.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 94, 950, 530));
@@ -280,6 +291,41 @@ public class AdminPanelFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+        private void cargarTabla() {
+            
+        String[] columnas = {"ID", "Nombre", "Categoría", "Estado", "Cantidad", "Ubicación"};
+
+        DefaultTableModel tabla = new DefaultTableModel(columnas, 0);// 0 filas iniciales
+
+            String sql = "SELECT m.id_material, m.nombre, m.descripcion, c.nombre as categoria, " +
+                         "e.nombre as estado, m.cantidad, m.id_ubicacion " +
+                         "FROM material m " +
+                         "JOIN categorias c ON c.id_categoria = m.id_categoria " +
+                         "JOIN estado e ON e.id_estado = m.id_estado";
+
+            try (PreparedStatement ps = AccesoBaseDatos.getInstance().getConn().prepareStatement(sql);
+                 ResultSet rs = ps.executeQuery()) {
+
+                while (rs.next()) {
+                    tabla.addRow(new Object[]{
+                        rs.getInt("id_material"),
+                        rs.getString("nombre"),
+                        rs.getString("descripcion"),
+                        rs.getString("categoria"),
+                        rs.getString("estado"),
+                        rs.getInt("cantidad"),
+                        rs.getInt("id_ubicacion")
+                    });
+                }
+
+            } catch (SQLException e) {
+                System.out.println("SQL ERROR -> " + e.getMessage());
+            }
+
+        tablaInventario.setModel(tabla);// muestra los datos que metes en 'tabla'
+    }
+    
+    
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
         
         dispose();
@@ -357,12 +403,17 @@ public class AdminPanelFrame extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminPanelFrame().setVisible(true);
+                String nombre = null;
+                new AdminPanelFrame(nombre).setVisible(true);
+
             }
         });
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

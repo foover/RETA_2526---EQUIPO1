@@ -121,7 +121,8 @@ public class MaterialDAO {
     
     public static List<Material> verInventario(){
 
-        String sql = "SELECT id_material, nombre, descripcion, id_categoria, id_subcategoria, estado, cantidad, id_ubicacion, fecha_alta, observaciones FROM material";
+        String sql = "SELECT m.id_material, m.nombre, c.nombre as categoria, e.nombre as estado, cantidad, id_ubicacion FROM material m "
+                + "JOIN categorias c ON c.id_categoria = m.id_categoria JOIN estado e ON e.id_estado = m.id_estado";
         
         List<Material> lista = new ArrayList<>();
         
@@ -148,7 +149,8 @@ public class MaterialDAO {
     
     public static List<Material> filtrarPorNombre(String nombre){
 
-        String sql = "SELECT id_material, nombre, descripcion, id_categoria, id_subcategoria, estado, cantidad, id_ubicacion, fecha_alta, observaciones FROM material WHERE nombre =?";
+        String sql = "SELECT m.id_material, m.nombre, c.nombre as categoria, e.nombre as estado, cantidad, id_ubicacion FROM material m JOIN categorias c ON c.id_categoria = m.id_categoria " +
+                    "JOIN estado e ON e.id_estado = m.id_estado WHERE m.nombre=?";
         
         List<Material> lista = new ArrayList<>();
         
@@ -176,7 +178,8 @@ public class MaterialDAO {
     
     public static List<Material> filtrarPorCategoria(String categoria){
 
-        String sql = "SELECT id_material, nombre, descripcion, id_categoria, id_subcategoria, estado, cantidad, id_ubicacion, fecha_alta, observaciones FROM material WHERE categoria=?";
+        String sql = "SELECT m.id_material, m.nombre, c.nombre as categoria, e.nombre as estado, cantidad, id_ubicacion FROM material m JOIN categorias c ON c.id_categoria = m.id_categoria " +
+                    "JOIN estado e ON e.id_estado = m.id_estado WHERE c.nombre =?";
         
         List<Material> lista = new ArrayList<>();
         
@@ -204,7 +207,8 @@ public class MaterialDAO {
     
     public static List<Material> filtrarPorEstado(String estado){
 
-        String sql = "SELECT id_material, nombre, descripcion, id_categoria, id_subcategoria, estado, cantidad, id_ubicacion, fecha_alta, observaciones FROM material WHERE estado =?";
+        String sql = "SELECT m.id_material, m.nombre, c.nombre as categoria, e.nombre as estado, cantidad, id_ubicacion FROM material m JOIN categorias c ON c.id_categoria = m.id_categoria " +
+                    "JOIN estado e ON e.id_estado = m.id_estado WHERE e.nombre=?";
         
         List<Material> lista = new ArrayList<>();
         
@@ -232,7 +236,8 @@ public class MaterialDAO {
     
     public static List<Material> filtrarPorCodigo(int id){
 
-        String sql = "SELECT id_material, nombre, descripcion, id_categoria, id_subcategoria, estado, cantidad, id_ubicacion, fecha_alta, observaciones FROM material WHERE id_material=?";
+        String sql = "SELECT m.id_material, m.nombre, c.nombre as categoria, e.nombre as estado, cantidad, id_ubicacion FROM material m JOIN categorias c ON c.id_categoria = m.id_categoria " +
+                    "JOIN estado e ON e.id_estado = m.id_estado WHERE m.id_material=?";
         
         List<Material> lista = new ArrayList<>();
         
