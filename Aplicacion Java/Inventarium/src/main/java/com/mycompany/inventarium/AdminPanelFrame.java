@@ -37,9 +37,9 @@ public class AdminPanelFrame extends javax.swing.JFrame {
         panelInventario = new javax.swing.JPanel();
         iconInven = new javax.swing.JLabel();
         lblInventario = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnUsuarios = new javax.swing.JButton();
+        btnInformes = new javax.swing.JButton();
+        btnImporExpor = new javax.swing.JButton();
         panelCentral = new javax.swing.JPanel();
         txtBuscar = new javax.swing.JTextField();
         cmbEstado = new javax.swing.JComboBox<>();
@@ -112,46 +112,51 @@ public class AdminPanelFrame extends javax.swing.JFrame {
 
         panelLateral.add(panelInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 40, 174, 40));
 
-        jButton1.setBackground(new java.awt.Color(32, 37, 46));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/users.png"))); // NOI18N
-        jButton1.setText("Usuarios");
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setFocusPainted(false);
-        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        panelLateral.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 86, 174, 40));
-
-        jButton2.setBackground(new java.awt.Color(32, 37, 46));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/archivo.png"))); // NOI18N
-        jButton2.setText("Informes");
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.setFocusPainted(false);
-        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnUsuarios.setBackground(new java.awt.Color(32, 37, 46));
+        btnUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        btnUsuarios.setForeground(new java.awt.Color(255, 255, 255));
+        btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/users.png"))); // NOI18N
+        btnUsuarios.setText("Usuarios");
+        btnUsuarios.setBorderPainted(false);
+        btnUsuarios.setContentAreaFilled(false);
+        btnUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnUsuarios.setFocusPainted(false);
+        btnUsuarios.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnUsuariosActionPerformed(evt);
             }
         });
-        panelLateral.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 132, 174, 40));
+        panelLateral.add(btnUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 86, 174, 40));
 
-        jButton3.setBackground(new java.awt.Color(32, 37, 46));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconoImporExport.png"))); // NOI18N
-        jButton3.setText("Importar/Exportar");
-        jButton3.setBorderPainted(false);
-        jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.setFocusPainted(false);
-        jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        panelLateral.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 178, 174, 40));
+        btnInformes.setBackground(new java.awt.Color(32, 37, 46));
+        btnInformes.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        btnInformes.setForeground(new java.awt.Color(255, 255, 255));
+        btnInformes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/archivo.png"))); // NOI18N
+        btnInformes.setText("Informes");
+        btnInformes.setBorderPainted(false);
+        btnInformes.setContentAreaFilled(false);
+        btnInformes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnInformes.setFocusPainted(false);
+        btnInformes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnInformes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInformesActionPerformed(evt);
+            }
+        });
+        panelLateral.add(btnInformes, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 132, 174, 40));
+
+        btnImporExpor.setBackground(new java.awt.Color(32, 37, 46));
+        btnImporExpor.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        btnImporExpor.setForeground(new java.awt.Color(255, 255, 255));
+        btnImporExpor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/iconoImporExport.png"))); // NOI18N
+        btnImporExpor.setText("Importar/Exportar");
+        btnImporExpor.setBorderPainted(false);
+        btnImporExpor.setContentAreaFilled(false);
+        btnImporExpor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnImporExpor.setFocusPainted(false);
+        btnImporExpor.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        panelLateral.add(btnImporExpor, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 178, 174, 40));
 
         getContentPane().add(panelLateral, java.awt.BorderLayout.LINE_START);
 
@@ -276,7 +281,13 @@ public class AdminPanelFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
-        // TODO add your handling code here:
+        
+        dispose();
+        
+        new LoginFrame().setVisible(true);
+        
+        
+        
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
@@ -307,9 +318,17 @@ public class AdminPanelFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbCategoriaActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnInformesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInformesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnInformesActionPerformed
+
+    private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
+        
+        UsuariosDialog usersDialog = new UsuariosDialog(this, true);
+        usersDialog.setLocationRelativeTo(this); // para que se abra centrado
+        usersDialog.setVisible(true); // muestra el dialogo
+        
+    }//GEN-LAST:event_btnUsuariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -351,13 +370,13 @@ public class AdminPanelFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnCerrarSesion;
     private javax.swing.JButton btnDarDeBaja;
     private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnImporExpor;
+    private javax.swing.JButton btnInformes;
     private javax.swing.JButton btnLocalizar;
+    private javax.swing.JButton btnUsuarios;
     private javax.swing.JComboBox<String> cmbCategoria;
     private javax.swing.JComboBox<String> cmbEstado;
     private javax.swing.JLabel iconInven;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAdmin;

@@ -202,7 +202,27 @@ public class LoginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-        // TODO add your handling code here:
+        
+        String nombre = txtNombre.getText();
+        
+        char[] caracteresContrasena = txtContrasena.getPassword();
+        
+        String contrasena = new String(caracteresContrasena);
+        
+        if(nombre.isEmpty() || contrasena.isEmpty()){
+            lblError.setText("Error: caracteres vacios");
+        }
+        
+        
+        if(UsuarioDAO.login(nombre, contrasena)){
+            dispose();
+            new AdminPanelFrame().setVisible(true);
+            lblError.setText("");
+        }else{
+            lblError.setText("Error: la contraseña no coincide");
+        }
+        
+        
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void txtContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContrasenaActionPerformed
