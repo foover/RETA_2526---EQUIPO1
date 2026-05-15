@@ -147,8 +147,15 @@ public class AnadirProfeDialog extends javax.swing.JDialog {
         
         try{
             
+            if(nombre.isEmpty() || contrasena.isEmpty()){
+                lblError.setText("Los campos no pueden estar vacios");
+                return;
+            }
+            
             if(UsuarioDAO.existeUsuario(nombre)){
                 lblError.setText("El usuario ya existe");
+                txtNombre.setText("");
+                txtContraseña.setText("");
                 return;
             }
             

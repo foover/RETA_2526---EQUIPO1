@@ -60,6 +60,7 @@ public class AdminPanelFrame extends javax.swing.JFrame {
         btnLocalizar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaInventario = new javax.swing.JTable();
+        lblError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1024, 700));
@@ -206,7 +207,7 @@ public class AdminPanelFrame extends javax.swing.JFrame {
         btnAlta.setBackground(new java.awt.Color(24, 95, 165));
         btnAlta.setForeground(new java.awt.Color(255, 255, 255));
         btnAlta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/plus.png"))); // NOI18N
-        btnAlta.setText("Alta");
+        btnAlta.setText("Crear");
         btnAlta.setBorderPainted(false);
         btnAlta.setFocusPainted(false);
         btnAlta.addActionListener(new java.awt.event.ActionListener() {
@@ -290,6 +291,10 @@ public class AdminPanelFrame extends javax.swing.JFrame {
 
         panelCentral.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 94, 950, 530));
 
+        lblError.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        lblError.setForeground(new java.awt.Color(180, 50, 50));
+        panelCentral.add(lblError, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, 490, 20));
+
         getContentPane().add(panelCentral, java.awt.BorderLayout.CENTER);
 
         pack();
@@ -341,39 +346,85 @@ public class AdminPanelFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
-        // TODO add your handling code here:
+        
+        
+        
     }//GEN-LAST:event_txtBuscarActionPerformed
 
     private void btnAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaActionPerformed
-        // TODO add your handling code here:
+        lblError.setText("");
+        
+        
     }//GEN-LAST:event_btnAltaActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
+        
+        lblError.setText("");
+        
+        
+        
+        
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnDarDeBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarDeBajaActionPerformed
-        // TODO add your handling code here:
+        
+        DefaultTableModel tabla = (DefaultTableModel) tablaInventario.getModel();
+        
+        int fila = tablaInventario.getSelectedRow();
+
+        try {
+            
+            if (fila >= 0) {
+
+                //guardar el nombre antes de borrar la fila
+                String nombre = tablaInventario.getValueAt(fila, 1).toString();
+
+                //eliminar de la tabla
+                tabla.removeRow(fila);
+                
+                MaterialDAO.eliminarMaterial(nombre);
+
+            } else {
+                lblError.setText("Selecciona una fila");
+                System.out.println("No hay fila seleccionada");
+                return;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("SQL EXCEPTION -> " + e.getMessage());
+        }
+        
     }//GEN-LAST:event_btnDarDeBajaActionPerformed
 
     private void btnLocalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocalizarActionPerformed
-        // TODO add your handling code here:
+        lblError.setText("");
+        
+        
     }//GEN-LAST:event_btnLocalizarActionPerformed
 
     private void cmbEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEstadoActionPerformed
-        // TODO add your handling code here:
+        lblError.setText("");
+        String estado = cmbEstado.toString();
+        
+        
+        
+        
     }//GEN-LAST:event_cmbEstadoActionPerformed
 
     private void cmbCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCategoriaActionPerformed
-        // TODO add your handling code here:
+        lblError.setText("");
+        
+        
     }//GEN-LAST:event_cmbCategoriaActionPerformed
 
     private void btnInformesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInformesActionPerformed
-        // TODO add your handling code here:
+        lblError.setText("");
+        
+        
     }//GEN-LAST:event_btnInformesActionPerformed
 
     private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
-        
+        lblError.setText("");
         UsuariosDialog usersDialog = new UsuariosDialog(this, true);
         usersDialog.setLocationRelativeTo(this); // para que se abra centrado
         usersDialog.setVisible(true); // muestra el dialogo
@@ -435,6 +486,7 @@ public class AdminPanelFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAdmin;
+    private javax.swing.JLabel lblError;
     private javax.swing.JLabel lblInventario;
     private javax.swing.JLabel lblMenu;
     private javax.swing.JLabel lblNombreUsuario;

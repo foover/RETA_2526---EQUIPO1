@@ -147,6 +147,21 @@ public class MaterialDAO {
         
     }
     
+    public static boolean eliminarMaterial(String nombre) throws SQLException {
+
+    String sql = ("DELETE FROM material WHERE nombre =?");
+
+    try (PreparedStatement ps = getConexion().prepareStatement(sql)){
+
+        ps.setString(1, nombre);
+
+        return ps.executeUpdate() > 0;
+
+        }
+
+    }
+    
+    
     public static List<Material> filtrarPorNombre(String nombre){
 
         String sql = "SELECT m.id_material, m.nombre, c.nombre as categoria, e.nombre as estado, cantidad, id_ubicacion FROM material m JOIN categorias c ON c.id_categoria = m.id_categoria " +

@@ -45,6 +45,7 @@ public class UsuariosDialog extends javax.swing.JDialog {
         tablaUsuarios = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         btnCerrar = new javax.swing.JButton();
+        lblError = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -154,6 +155,10 @@ public class UsuariosDialog extends javax.swing.JDialog {
 
         panelContenido.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 500, 40));
 
+        lblError.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        lblError.setForeground(new java.awt.Color(180, 50, 50));
+        panelContenido.add(lblError, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 200, 20));
+
         getContentPane().add(panelContenido, java.awt.BorderLayout.CENTER);
 
         pack();
@@ -161,6 +166,7 @@ public class UsuariosDialog extends javax.swing.JDialog {
 
     private void btnAnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnadirActionPerformed
         
+        lblError.setText("");
         AnadirProfeDialog anadirDialog = new AnadirProfeDialog(this, true);
         anadirDialog.setLocationRelativeTo(this); // para que se abra centrado
         anadirDialog.setVisible(true);
@@ -172,7 +178,33 @@ public class UsuariosDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
+        
+        DefaultTableModel tabla = (DefaultTableModel) tablaUsuarios.getModel();
+        
+        int fila = tablaUsuarios.getSelectedRow();
+
+        try {
+            
+            if (fila >= 0) {
+
+                //guardar el nombre antes de borrar la fila
+                String nombre = tablaUsuarios.getValueAt(fila, 0).toString();
+
+                //eliminar de la tabla
+                tabla.removeRow(fila);
+                
+                UsuarioDAO.eliminarProfe(nombre);
+
+            } else {
+                lblError.setText("Selecciona una fila");
+                System.out.println("No hay fila seleccionada");
+                return;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("SQL EXCEPTION -> " + e.getMessage());
+        }
+
     }//GEN-LAST:event_btnEliminarActionPerformed
     
     private void cargarTabla() {
@@ -248,6 +280,7 @@ public class UsuariosDialog extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblError;
     private javax.swing.JPanel panelContenido;
     private javax.swing.JTable tablaUsuarios;
     // End of variables declaration//GEN-END:variables

@@ -211,6 +211,7 @@ public class LoginFrame extends javax.swing.JFrame {
         
         if(nombre.isEmpty() || contrasena.isEmpty()){
             lblError.setText("Error: caracteres vacios");
+            return;
         }
         
         
