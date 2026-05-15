@@ -20,6 +20,14 @@ public class Usuario {
         this.contrasena = contrasena;
         this.rol = rol;
     }
+    
+    public Usuario(int id, String nombre, String contrasena, Enum rol) {
+        this.id = id;
+        this.nombre = nombre;
+        this.contrasena = contrasena;
+        this.rol = rol;
+    }
+    
 
     public int getId() {return id;}
 

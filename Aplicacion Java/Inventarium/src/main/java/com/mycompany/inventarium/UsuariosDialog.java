@@ -4,6 +4,13 @@
  */
 package com.mycompany.inventarium;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author DAW109
@@ -16,6 +23,7 @@ public class UsuariosDialog extends javax.swing.JDialog {
     public UsuariosDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        cargarTabla();
     }
 
     /**
@@ -152,7 +160,11 @@ public class UsuariosDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnadirActionPerformed
-        // TODO add your handling code here:
+        
+        AnadirProfeDialog anadirDialog = new AnadirProfeDialog(this, true);
+        anadirDialog.setLocationRelativeTo(this); // para que se abra centrado
+        anadirDialog.setVisible(true);
+        
     }//GEN-LAST:event_btnAnadirActionPerformed
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
@@ -162,7 +174,29 @@ public class UsuariosDialog extends javax.swing.JDialog {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarActionPerformed
+    
+    private void cargarTabla() {
+    
+        String[] columnas = {"Nombre", "Rol"};
 
+        DefaultTableModel tabla = new DefaultTableModel(columnas, 0);
+
+        // Obtener la lista del metodo UsuarioDAO y agregar filas
+        List<Usuario> usuarios = UsuarioDAO.verUsuarios();
+
+        for (Usuario u : usuarios) {
+            Object[] fila = {
+                u.getNombre(),
+                u.getRol()};
+
+            tabla.addRow(fila);
+        }
+
+        tablaUsuarios.setModel(tabla);
+        
+    }
+    
+    
     /**
      * @param args the command line arguments
      */

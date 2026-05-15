@@ -92,7 +92,7 @@ public class UsuarioDAO {
     
     public static List<Usuario> verUsuarios(){
         
-        String sql = "SELECT id, nombre, contrasena, rol FROM usuarios";
+        String sql = "SELECT nombre, contrasena, rol FROM usuarios";
         
         List<Usuario> lista = new ArrayList<>();
         

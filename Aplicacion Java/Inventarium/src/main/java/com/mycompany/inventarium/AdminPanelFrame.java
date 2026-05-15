@@ -301,7 +301,7 @@ public class AdminPanelFrame extends javax.swing.JFrame {
 
         DefaultTableModel tabla = new DefaultTableModel(columnas, 0);// 0 filas iniciales
 
-            String sql = "SELECT m.id_material, m.nombre, m.descripcion, c.nombre as categoria, " +
+        String sql = "SELECT m.id_material, m.nombre, m.descripcion, c.nombre as categoria, " +
                          "e.nombre as estado, m.cantidad, m.id_ubicacion " +
                          "FROM material m " +
                          "JOIN categorias c ON c.id_categoria = m.id_categoria " +

@@ -17,6 +17,16 @@ public class AnadirProfeDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
     }
+    //creo un constructor con dialog en vez de frame para poder pasar de un frame a otro
+    public AnadirProfeDialog(java.awt.Dialog parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+    }
+    
+    
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,8 +42,8 @@ public class AnadirProfeDialog extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        lblContrasena = new javax.swing.JLabel();
+        txtContraseña = new javax.swing.JPasswordField();
         lblError = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
@@ -72,14 +82,19 @@ public class AnadirProfeDialog extends javax.swing.JDialog {
         });
         jPanel2.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 35, 350, 34));
 
-        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Contraseña");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 82, 200, 16));
+        lblContrasena.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        lblContrasena.setForeground(new java.awt.Color(255, 255, 255));
+        lblContrasena.setText("Contraseña");
+        jPanel2.add(lblContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 82, 200, 16));
 
-        jTextField1.setBackground(new java.awt.Color(44, 50, 62));
-        jTextField1.setForeground(new java.awt.Color(220, 225, 235));
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 102, 350, 34));
+        txtContraseña.setBackground(new java.awt.Color(44, 50, 62));
+        txtContraseña.setForeground(new java.awt.Color(220, 225, 235));
+        txtContraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtContraseñaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 102, 350, 34));
 
         lblError.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         lblError.setForeground(new java.awt.Color(210, 70, 70));
@@ -119,12 +134,25 @@ public class AnadirProfeDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_txtNombreActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+        
+        dispose();
+        
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
+        
+        String nombre = txtNombre.getText().trim();
+        
+        String contrasena = new String(txtContraseña.getPassword());
+        
+        
+        
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContraseñaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,11 +201,11 @@ public class AnadirProfeDialog extends javax.swing.JDialog {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblContrasena;
     private javax.swing.JLabel lblError;
+    private javax.swing.JPasswordField txtContraseña;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
