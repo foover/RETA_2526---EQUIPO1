@@ -145,7 +145,22 @@ public class AnadirProfeDialog extends javax.swing.JDialog {
         
         String contrasena = new String(txtContraseña.getPassword());
         
-        
+        try{
+            
+            if(UsuarioDAO.existeUsuario(nombre)){
+                lblError.setText("El usuario ya existe");
+                return;
+            }
+            
+            Usuario nuevo = new Usuario(nombre, contrasena, Roles.PROFESOR);
+            UsuarioDAO.anadirProfe(nuevo);
+            
+            dispose();
+            
+            
+        } catch(Exception e){
+            lblError.setText("Error -> " + e.getMessage());
+        }
         
         
     }//GEN-LAST:event_btnGuardarActionPerformed
