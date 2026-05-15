@@ -6,7 +6,7 @@ USE gestion_taller;
 CREATE TABLE usuarios(
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL UNIQUE,
-    contrasena VARCHAR(50) NOT NULL,
+    contrasena VARCHAR(60) NOT NULL,
     rol ENUM('PROFESOR','ADMINISTRADOR')
 );
 
