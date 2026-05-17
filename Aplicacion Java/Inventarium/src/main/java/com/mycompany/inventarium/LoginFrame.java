@@ -214,13 +214,16 @@ public class LoginFrame extends javax.swing.JFrame {
             return;
         }
         
+        Usuario usuario = UsuarioDAO.login(nombre, contrasena);
         
-        if(UsuarioDAO.login(nombre, contrasena)){
+        
+        if (usuario != null) {
             dispose();
-            new AdminPanelFrame(nombre).setVisible(true);
-            lblError.setText("");
-        }else{
-            lblError.setText("Error: la contraseña no coincide");
+            if (usuario.getRol() == Roles.ADMINISTRADOR) {
+                new AdminPanelFrame(nombre).setVisible(true);
+            } else {
+                new ProfesorFrame(nombre).setVisible(true);
+            }
         }
         
         

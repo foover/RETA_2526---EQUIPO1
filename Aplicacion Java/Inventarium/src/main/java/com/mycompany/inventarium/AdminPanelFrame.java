@@ -310,7 +310,8 @@ public class AdminPanelFrame extends javax.swing.JFrame {
                          "e.nombre as estado, m.cantidad, m.id_ubicacion " +
                          "FROM material m " +
                          "JOIN categorias c ON c.id_categoria = m.id_categoria " +
-                         "JOIN estado e ON e.id_estado = m.id_estado";
+                         "JOIN estado e ON e.id_estado = m.id_estado "  +
+                         "JOIN ubicaciones u ON u.codigo_armario = m.id_ubicacion";
 
             try (PreparedStatement ps = AccesoBaseDatos.getInstance().getConn().prepareStatement(sql);
                  ResultSet rs = ps.executeQuery()) {
@@ -323,7 +324,7 @@ public class AdminPanelFrame extends javax.swing.JFrame {
                         rs.getString("categoria"),
                         rs.getString("estado"),
                         rs.getInt("cantidad"),
-                        rs.getInt("id_ubicacion")
+                        rs.getInt("espacio")
                     });
                 }
 
@@ -354,6 +355,9 @@ public class AdminPanelFrame extends javax.swing.JFrame {
     private void btnAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaActionPerformed
         lblError.setText("");
         
+        AnadirProfeDialog anadirDialog = new AnadirProfeDialog(this, true);
+        anadirDialog.setLocationRelativeTo(this); // para que se abra centrado
+        anadirDialog.setVisible(true);
         
     }//GEN-LAST:event_btnAltaActionPerformed
 

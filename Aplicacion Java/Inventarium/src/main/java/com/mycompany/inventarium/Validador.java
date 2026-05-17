@@ -35,11 +35,11 @@ public class Validador {
         return false;
     }
     
-    public boolean leerDescripcion(String descripcion){
-        String regex = ("^[\\s\\S]{3,500}$");
-        
-        if (descripcion.mateches(regex)){
-            
-        }
-    }
+//    public boolean leerDescripcion(String descripcion){
+//        String regex = ("^[\\s\\S]{3,500}$");
+//        
+//        if (descripcion.mateches(regex)){
+//            
+//        }
+//    }
 }

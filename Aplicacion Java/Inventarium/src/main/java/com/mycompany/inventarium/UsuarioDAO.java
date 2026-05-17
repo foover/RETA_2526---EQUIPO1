@@ -116,7 +116,7 @@ public class UsuarioDAO {
 
     }
 
-    public static boolean login(String nombre, String contrasena) {
+    public static Usuario login(String nombre, String contrasena) {
             
         String sql = "SELECT nombre, contrasena, rol FROM usuarios WHERE nombre = ? AND contrasena = ?";
         
@@ -129,16 +129,15 @@ public class UsuarioDAO {
                 
                 if (rs.next()) {
                     
-                    return true;
+                    return crearUsuario(rs);
                     
                 }
             }
         } catch (SQLException e) {
             System.out.println("SQL ERROR -> " + e.getMessage());
-            return false;
         }
         
-        return false;
+        return null;
         
     }
     
